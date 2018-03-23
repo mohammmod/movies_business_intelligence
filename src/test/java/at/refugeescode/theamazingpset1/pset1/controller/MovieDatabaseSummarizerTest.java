@@ -19,10 +19,10 @@ class MovieDatabaseSummarizerTest {
     List<pset1.modal.Actor> actorsInfo = ParserActors.getActorsInfo();
 
     @Test
-    void testRating() {
+    void testTheFiveMostRatingMovie() {
         List<String> movieRating = MovieInfoGuy.getRatings(movieInfo);
         int size = movieRating.size();
-        assertEquals(size, 5);
+        assertEquals(5, size);
         movieRating.stream()
                 .forEach(onefilm -> Assert.assertThat(onefilm, containsString("10.0")));
         Assert.assertThat(movieRating.get(0), is("Reckless (10.0)"));
@@ -30,7 +30,7 @@ class MovieDatabaseSummarizerTest {
     }
 
     @Test
-    void testGenres() {
+    void testTheMostAppearingGenres() {
         List<String> movieGenres = MovieInfoGuy.getMovieGenres(movieInfo);
         int size = movieGenres.size();
         assertEquals(size, 2);
@@ -53,7 +53,7 @@ class MovieDatabaseSummarizerTest {
     void testActorsRatio() {
         String mostHirdActors = ActorsInfoGuy.getRatio(actorsInfo);
         Assert.assertThat(mostHirdActors.trim(), is("female : (64%) male : (35%)"));
-        
+
     }
 
 
